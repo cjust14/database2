@@ -47,7 +47,7 @@ public class ReadMadFragment extends Fragment {
             String hf4 = mk.getHF4();
             String Fedt = mk.getFedt();
 
-            info = info+"\n\n"+"Id :"+id+"\n HF1+2 :"+hf12+"\n"+"HF3 :"+hf3 +"\n"+"HF4 :"+hf4 +"\n"+"1-3 spsk. fedt :"+Fedt;
+            info = info+"\n\n"+"Id : "+id+"\n HF1+2 : "+hf12+"\n"+"HF3 : "+hf3 +"\n"+"HF4 : "+hf4 +"\n"+"1-3 spsk. fedt : "+Fedt;
         }
         TxtInfo.setText(info);
         return view;

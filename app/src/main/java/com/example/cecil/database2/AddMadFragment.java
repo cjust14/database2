@@ -1,8 +1,11 @@
 package com.example.cecil.database2;
 
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,16 +21,17 @@ import android.widget.Toast;
  * {@link AddMadFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
  */
+
 public class AddMadFragment extends Fragment {
     private EditText Id, HF12, HF3, HF4, fedt;
-    private Button BnSave;
+    private Button BnSave, BnDate;
 
-    private OnFragmentInteractionListener mListener;
+    private AddMadFragment.OnFragmentInteractionListener mListener;
 
     public AddMadFragment() {
         // Required empty public constructor
-    }
 
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -40,6 +44,7 @@ public class AddMadFragment extends Fragment {
         HF4 = view.findViewById(R.id.txt_HF4);
         fedt = view.findViewById(R.id.txt_fedt);
         BnSave = view.findViewById(R.id.bn_save_mad);
+        BnDate = view.findViewById(R.id.bn_date);
 
         BnSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +65,7 @@ public class AddMadFragment extends Fragment {
 
 
                 MainActivity.myAppDatabase.myDao().addMad(mad);
-                Toast.makeText(getActivity(),"Måltid tilføjet til madkassen", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Måltid tilføjet til madkassen", Toast.LENGTH_SHORT).show();
 
                 Id.setText("");
                 HF12.setText("");
@@ -71,8 +76,22 @@ public class AddMadFragment extends Fragment {
             }
         });
 
+        BnDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DialogFragment dFragment = new DatePickerFragment();
+
+                dFragment.show(getFragmentManager(), "Date Picker");
+            }
+        });
+
         return view;
+
+
+
     }
+
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

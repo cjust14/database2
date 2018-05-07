@@ -9,19 +9,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.cecil.database2.R;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link HomeFragment.OnFragmentInteractionListener} interface
+ * {@link ForsideFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
  */
-public class HomeFragment extends Fragment implements View.OnClickListener{
-    private Button BnAddMad, BnReadMad, BnUpdate, BnLogud, BnInfo;
+public class ForsideFragment extends Fragment implements View.OnClickListener {
+    private Button BnLogin;
 
     private OnFragmentInteractionListener mListener;
 
-    public HomeFragment() {
+    public ForsideFragment() {
         // Required empty public constructor
     }
 
@@ -30,21 +31,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
-        BnAddMad = view.findViewById(R.id.bn_add_mad);
-        BnAddMad.setOnClickListener(this);
+        View view = inflater.inflate(R.layout.fragment_forside, container, false);
+        BnLogin = view.findViewById(R.id.bn_login);
+        BnLogin.setOnClickListener(this);
 
-        BnReadMad = view.findViewById(R.id.bn_view_mad);
-        BnReadMad.setOnClickListener(this);
-
-        BnUpdate = view.findViewById(R.id.bn_update_mad);
-        BnUpdate.setOnClickListener(this);
-
-        BnLogud = view.findViewById(R.id.bn_logud);
-        BnLogud.setOnClickListener(this);
-
-        BnInfo = view.findViewById(R.id.bn_info);
-        BnInfo.setOnClickListener(this);
         return view;
     }
 
@@ -63,7 +53,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
-}
+        }
     }
 
     @Override
@@ -72,37 +62,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         mListener = null;
     }
 
-    //Afhængig af hvilken knap man klikker på, kommer man ind på den tilsvarende fragment
     @Override
     public void onClick(View view) {
-        switch (view.getId())
-        {
-            case R.id.bn_add_mad:
-                MainActivity.fragmentManager.beginTransaction().replace(R.id.fragment_container, new AddMadFragment()).
-                        addToBackStack(null).commit();
-                break;
-
-            case R.id.bn_view_mad:
-                MainActivity.fragmentManager.beginTransaction().replace(R.id.fragment_container, new ReadMadFragment()).
-                        addToBackStack(null).commit();
-                break;
-
-            case R.id.bn_update_mad:
-                MainActivity.fragmentManager.beginTransaction().replace(R.id.fragment_container, new UpdateFragment()).
-                        addToBackStack(null).commit();
-                break;
-
-            case R.id.bn_logud:
-                MainActivity.fragmentManager.beginTransaction().replace(R.id.fragment_container, new ForsideFragment()).
-                        addToBackStack(null).commit();
-                break;
-
-            case R.id.bn_info:
+        switch (view.getId()) {
+            case R.id.bn_login:
                 MainActivity.fragmentManager.beginTransaction().replace(R.id.fragment_container, new HomeFragment()).
                         addToBackStack(null).commit();
                 break;
         }
-
     }
 
     /**

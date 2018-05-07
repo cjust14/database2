@@ -9,7 +9,7 @@ import android.os.Bundle;
 import static com.example.cecil.database2.R.id.fragment_container;
 
 public class MainActivity extends AppCompatActivity implements HomeFragment.OnFragmentInteractionListener, AddMadFragment.OnFragmentInteractionListener,
-        ReadMadFragment.OnFragmentInteractionListener, UpdateFragment.OnFragmentInteractionListener{
+        ReadMadFragment.OnFragmentInteractionListener, UpdateFragment.OnFragmentInteractionListener, ForsideFragment.OnFragmentInteractionListener{
     public static FragmentManager fragmentManager;
     public static MyAppDatabase myAppDatabase;
 
@@ -21,14 +21,13 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.OnFr
         myAppDatabase = Room.databaseBuilder(getApplicationContext(),MyAppDatabase.class, "userdb").allowMainThreadQueries().build();
 
 
-
         if(findViewById(R.id.fragment_container)!= null)
         {
             if(savedInstanceState!= null)
             {
                 return;
             }
-            fragmentManager.beginTransaction().add(fragment_container, new HomeFragment()).commit();
+            fragmentManager.beginTransaction().add(fragment_container, new ForsideFragment()).commit();
         }
 
         }
